@@ -1,0 +1,329 @@
+/* Reinicia márgenes y bordes raros */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Botón menú hamburguesa */
+.menu-toggle {
+  margin-left: auto;
+  width: 40px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  background: #0b3b8c;
+  border-radius: 2px;
+}
+
+/* Panel lateral derecho */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 280px;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: -2px 0 12px rgba(0,0,0,0.12);
+  transition: right 0.2s ease;
+  padding: 80px 24px 24px;
+  z-index: 1100;
+}
+.side-menu.open { right: 0; }
+.side-menu nav { margin: 0 -24px; }
+.side-menu nav a {
+  display: block;
+  padding: 12px 24px;
+  color: #0b3b8c;
+  text-decoration: none;
+  border-radius: 0;
+  transition: background 0.2s ease, color 0.2s ease;
+  text-transform: uppercase;
+  width: 100%;
+}
+.side-menu nav a:hover,
+.side-menu nav a:focus {
+  background: #0b3b8c;
+  color: #ffffff;
+}
+
+/* Backdrop */
+.side-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.0);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+.side-menu-backdrop.show {
+  opacity: 1;
+  background: rgba(0,0,0,0.25);
+}
+
+/* Ajustes generales del HTML */
+html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  scroll-behavior: smooth;
+  font-size: 16px;
+  color-scheme: light;
+}
+
+/* Cuerpo de la página con fondo claro */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #fafafa;
+  color: #1f2937;
+  display: grid;
+  grid-template-rows: 64px 1fr auto;
+  overflow-y: scroll;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Enlaces con color azul */
+a {
+  color: #3b82f6;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Cambia el color al pasar el mouse */
+a:hover, a:focus {
+  color: #2563eb;
+  outline: none;
+}
+
+/* Scroll personalizado */
+body::-webkit-scrollbar {
+  width: 12px;
+}
+body::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 6px;
+}
+body::-webkit-scrollbar-thumb {
+  background: #3b82f6cc;
+  border-radius: 6px;
+  border: 3px solid #f3f4f6;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: #2563ebcc;
+}
+
+/* Encabezado fijo arriba */
+header {
+  position: sticky;
+  top: 0;
+  height: 64px;
+  backdrop-filter: saturate(180%) blur(16px);
+  background: rgba(255 255 255 / 0.85);
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  z-index: 1000;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.05);
+}
+
+/* Logo o nombre de marca */
+.brand {
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  color: #0b3b8c;
+  letter-spacing: 0.05em;
+  gap: 12px;
+}
+
+/* Ícono junto al logo */
+.brand .material-icons {
+  font-size: 32px;
+  margin-right: 8px;
+  color: #3b82f6;
+}
+
+/* Avatar redondo en el header */
+.header-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+}
+
+/* Área principal del contenido */
+main.content {
+  flex-grow: 1;
+  padding: 32px 48px;
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  background: #f9fafb;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Secciones Visión y Equipo */
+#vision, #team {
+  background: white;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 0 24px rgba(206, 213, 224, 0.4);
+  color: #1e293b;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Títulos grandes centrados */
+#vision h2, #team h2 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  margin-bottom: 16px;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* Subtítulos más chicos */
+#vision h3, #team h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* Texto justificado en visión */
+#vision p {
+  text-align: justify;
+}
+
+/* Lista de visión */
+#vision ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  color: #374151;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* Espacio entre los puntos de la lista */
+#vision ul li {
+  margin-bottom: 12px;
+}
+
+/* Lista de equipo */
+#team ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  color: #374151;
+  line-height: 1.6;
+  text-align: justify;
+}
+#team ul li {
+  margin-bottom: 12px;
+}
+
+/* Contenedor de las tarjetas de imágenes */
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 100px;
+  justify-items: center;
+  margin-top: 80px;
+}
+
+/* Tarjeta individual de galería */
+.gallery {
+  width: 100%;
+  max-width: 240px;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+/* Imagen dentro de la tarjeta */
+.gallery img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 16px auto 0;
+}
+
+/* Al pasar el mouse, se resalta */
+.gallery:hover {
+  border: 2px solid lightcoral;
+  transform: scale(1.03);
+}
+
+/* Pie de imagen con estilo */
+.footer {
+  padding: 8px;
+  font-weight: bold;
+  text-shadow: none;
+  color: #1e293b;
+}
+
+/* Pie de página general */
+footer {
+  background: rgba(255 255 255 / 0.9);
+  backdrop-filter: saturate(180%) blur(16px);
+  color: #6b7280;
+  font-size: 0.9rem;
+  padding: 20px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 -1px 4px rgb(0 0 0 / 0.05);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Elimina márgenes innecesarios del texto */
+footer p {
+  margin: 0;
+}
+
+/* Redes sociales en el footer */
+footer .social-links {
+  display: flex;
+  gap: 24px;
+}
+
+/* Estilo de los enlaces sociales */
+footer .social-links a {
+  display: flex;
+  align-items: center;
+  color: #6b7280;
+  transition: color 0.3s ease;
+}
+
+/* Cambia color al pasar el mouse */
+footer .social-links a:hover,
+footer .social-links a:focus {
+  color: #3b82f6;
+}
+
+/* Tamaño de los íconos sociales */
+footer .social-links a img {
+  width: 24px;
+  height: 24px;
+}

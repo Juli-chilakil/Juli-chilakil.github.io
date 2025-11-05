@@ -1,0 +1,244 @@
+/* Estilo del documento */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f5f5f7;
+  color: #1d1d1f;
+}
+
+/* Contenedor central para secciones */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Encabezado principal */
+header {
+  background-color: #ffffff;
+  padding: 2rem 0;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Título del producto */
+header h1 {
+  font-size: 3rem;
+  margin: 0;
+  color: #0b3b8c;
+}
+
+/* Alineación del título y logotipos en el header */
+header h1 {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* Evitar espacio entre Eco y Volt */
+.brand-name {
+  display: inline-flex;
+  gap: 0;
+}
+
+/* Logotipo de la izquierda dentro del h1 */
+.header-brand {
+  width: 80px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Avatar redondo a la derecha del nombre */
+.header-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+}
+
+/* Lema o tagline */
+header .tagline {
+  font-size: 1.2rem;
+  color: #6e6e73;
+  margin-top: 0.5rem;
+}
+
+/* Botones de navegación (como enlaces a redes, tienda, blog, etc.) */
+.nav-buttons {
+  margin-top: 1rem;
+}
+
+/* Estilo de los botones pequeños del header */
+.nav-buttons .button.small {
+  font-size: 0.9rem;
+  padding: 0.6rem 1.2rem;
+  margin: 0 0.3rem;
+  background-color: #0b3b8c; /* azul oscuro a juego con el título */
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+/* Efecto hover para los botones */
+.nav-buttons .button.small:hover {
+  background-color: #072a66;
+}
+
+/* Sección principal con imagen y texto */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 4rem 0;
+  background-color: #f2f2f2;
+}
+
+/* Imagen del producto */
+.hero-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+/* Texto centrado sobre la sección */
+.centered-text {
+  margin-top: 2rem;
+}
+
+/* Título dentro de la sección hero */
+.centered-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Botón principal de llamada a la acción */
+.button {
+  background-color: #0071e3;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+/* Efecto hover para el botón principal */
+.button:hover {
+  background-color: #005bb5;
+}
+
+/* Sección de beneficios */
+.benefits {
+  background-color: #ffffff;
+  text-align: center;
+  padding: 3rem 0;
+}
+
+/* Tarjetas de beneficios */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Cada tarjeta individual */
+.card {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  width: 300px;
+}
+
+/* Sección de testimonios */
+.testimonial {
+  background-color: #f5f5f5;
+  text-align: center;
+  padding: 3rem 0;
+}
+
+/* Cita del testimonio */
+.testimonial blockquote {
+  font-style: italic;
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Nombre del autor del testimonio */
+.testimonial cite {
+  display: block;
+  margin-top: 1rem;
+  color: #6e6e73;
+  font-style: normal;
+}
+
+/* Sección de llamada a la acción final */
+.cta {
+  text-align: center;
+  padding: 4rem 0;
+  background-color: #ffffff;
+}
+
+/* Override and additions for header background video */
+.header-hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: transparent;
+  min-height: 100vh; /* full screen height */
+  padding: 0; /* override header default padding */
+  border-bottom: none; /* remove line under header when using video */
+}
+
+.header-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.header-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  z-index: 1;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical center */
+  align-items: center;     /* horizontal center */
+  text-align: center;
+}
+
+/* Colores del nombre de marca y eslogan sobre el video */
+header h1 .eco { color: #ffffff; }
+header h1 .volt { color: #0b3b8c; }
+.header-content .tagline { color: #ffffff; }
+
+/* Pie de página */
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  background-color: #f2f2f2;
+  color: #6e6e73;
+  font-size: 0.9rem;
+}
+/* CSS creado por Julissa*/

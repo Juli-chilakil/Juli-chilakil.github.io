@@ -1,0 +1,470 @@
+/* Esto es para que todos los elementos y sus hijos usen el mismo sistema de caja */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Botón menú hamburguesa */
+.menu-toggle {
+  margin-left: auto;
+  width: 40px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  background: #0b3b8c;
+  border-radius: 2px;
+}
+
+/* Panel lateral derecho */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 280px;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: -2px 0 12px rgba(0,0,0,0.12);
+  transition: right 0.2s ease;
+  padding: 80px 24px 24px;
+  z-index: 1100;
+}
+.side-menu.open { right: 0; }
+.side-menu nav { margin: 0 -24px; }
+.side-menu nav a {
+  display: block;
+  padding: 12px 24px;
+  color: #0b3b8c;
+  text-decoration: none;
+  border-radius: 0;
+  transition: background 0.2s ease, color 0.2s ease;
+  text-transform: uppercase;
+  width: 100%;
+}
+.side-menu nav a:hover,
+.side-menu nav a:focus {
+  background: #0b3b8c;
+  color: #ffffff;
+}
+
+/* Backdrop */
+.side-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.0);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+.side-menu-backdrop.show {
+  opacity: 1;
+  background: rgba(0,0,0,0.25);
+}
+
+/* Tipografía base del sitio, con scroll suave y colores claros */
+html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  scroll-behavior: smooth; /* hace que el desplazamiento entre secciones sea suave */
+  font-size: 16px;
+  color-scheme: light;
+}
+
+/* El cuerpo ocupa toda la altura, y se organiza como rejilla con header-arriba, contenido y footer */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #fafafa;
+  color: #1f2937;
+  display: grid;
+  grid-template-rows: 64px 1fr auto; /* header, contenido, footer */
+  overflow-y: scroll;
+  -webkit-font-smoothing: antialiased; /* suaviza tipografía en Mac */
+  -moz-osx-font-smoothing: grayscale; /* igual que el de arriba pero para Mac */
+}
+
+/* Enlaces normales con transición suave al pasar el cursor */
+a {
+  color: #3b82f6;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Hover y focus para los links */
+a:hover, a:focus {
+  color: #2563eb;
+  outline: none;
+}
+
+/* Para que los botones usen la misma letra que el resto */
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Inputs y áreas de texto con misma fuente */
+input, textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  color: #1f2937;
+}
+
+/* Estilito fino para la barra de scroll */
+body::-webkit-scrollbar {
+  width: 12px;
+}
+body::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 6px;
+}
+body::-webkit-scrollbar-thumb {
+  background: #3b82f6cc;
+  border-radius: 6px;
+  border: 3px solid #f3f4f6;
+  transition: background 0.3s ease;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: #2563ebcc;
+}
+
+/* ==== HEADER (esa barra superior pegada) ==== */
+header {
+  position: sticky; /* se queda pegado arriba al hacer scroll */
+  top: 0;
+  height: 64px;
+  backdrop-filter: saturate(180%) blur(16px); /* le da ese fondo como desenfocado */
+  background: rgba(255 255 255 / 0.85);
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  z-index: 1000;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.05); /* sombrita suave abajo */
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  color: #0b3b8c;
+  letter-spacing: 0.05em;
+  user-select: none;
+  flex-shrink: 0;
+  gap: 12px;
+}
+
+/* Icono de rayo al lado del nombre */
+.brand .material-icons {
+  font-size: 32px;
+  margin-right: 8px;
+  color: #3b82f6;
+}
+
+/* Avatar redondo en el header */
+.header-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+}
+
+/* ==== CONTENIDO PRINCIPAL ====
+   (restaurado: estilos del contenedor principal debajo del header) */
+main.content {
+  flex-grow: 1;
+  padding: 32px 48px;
+  min-height: calc(100vh - 64px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  background: #f9fafb;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* === SECCIÓN DE INNOVACIÓN === */
+section#innovation {
+  background: white;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 0 24px rgb(206 213 224 / 0.4);
+  display: block;
+  color: #1e293b;
+}
+
+/* Título de la sección */
+#innovation h2 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  margin-bottom: 16px;
+  font-weight: 800;
+  user-select: none;
+}
+
+/* Párrafos de innovación */
+#innovation p {
+  font-size: clamp(1rem, 1.8vw, 1.125rem);
+  line-height: 1.6;
+  user-select: text;
+}
+
+/* Lista con los puntos clave */
+#innovation ul {
+  margin-top: 1rem;
+  list-style-type: disc;
+  padding-left: 1.2rem;
+  color: #334155;
+}
+
+/* Galería de imágenes de innovación */
+#innovation .media-gallery {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+/* Estilos para cada imagen de la galería */
+#innovation .media-gallery img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgb(59 130 246 / 0.2);
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+
+/* Efecto al pasar el mouse sobre las imágenes */
+#innovation .media-gallery img:hover,
+#innovation .media-gallery img:focus {
+  outline: none;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgb(59 130 246 / 0.4);
+  cursor: pointer;
+}
+
+/* === SECCIÓN DE CONTACTO === */
+section#contact {
+  background: white;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 0 24px rgb(206 213 224 / 0.4);
+  display: block;
+  color: #1e293b;
+}
+
+/* Título de contacto */
+#contact h2 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  margin-bottom: 16px;
+  font-weight: 800;
+  user-select: none;
+}
+
+/* Formulario de contacto */
+#contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 480px;
+}
+
+/* Etiquetas de los campos */
+#contact label {
+  font-weight: 600;
+  font-size: 1rem;
+  user-select: none;
+}
+
+/* Campos de entrada */
+#contact input, 
+#contact textarea {
+  background: #f9fafb;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  resize: vertical;
+  min-height: 44px;
+  outline-offset: 2px;
+  color: #1e293b;
+}
+
+/* Efecto al hacer focus */
+#contact input:focus,
+#contact textarea:focus {
+  border-color: #3b82f6;
+  background: white;
+  outline: none;
+  box-shadow: 0 0 5px #3b82f6aa;
+}
+
+/* Altura mínima del área de texto */
+#contact textarea {
+  min-height: 120px;
+}
+
+/* Mensajes de error (validación) */
+#contact .error-message {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: -12px;
+  user-select: none;
+}
+
+/* Mensaje de éxito al enviar */
+#contact .success-message {
+  background: #bbf7d0;
+  color: #14532d;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  margin-top: 8px;
+  user-select: none;
+  box-shadow: 0 4px 8px rgb(34 197 94 / 0.3);
+  max-width: 480px;
+}
+
+/* Botón para enviar el formulario */
+#contact .btn-submit {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 36px;
+  font-weight: 700;
+  font-size: 1.125rem;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+  cursor: pointer;
+  min-width: 160px;
+  justify-content: center;
+}
+
+/* Cuando el botón está deshabilitado */
+#contact .btn-submit:disabled {
+  background: #93c5fd88;
+  cursor: not-allowed;
+}
+
+/* Hover y focus del botón */
+#contact .btn-submit:hover:not(:disabled),
+#contact .btn-submit:focus:not(:disabled) {
+  background: #2563eb;
+  outline: none;
+}
+
+/* Info de contacto adicional abajo del formulario */
+.contact-info {
+  margin-top: 32px;
+  color: #374151;
+  font-size: 1rem;
+  user-select: text;
+  max-width: 480px;
+}
+
+.contact-info .info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+  margin-bottom: 16px;
+}
+
+.contact-info .info-item .material-icons {
+  font-size: 28px;
+  color: #3b82f6;
+  flex-shrink: 0;
+}
+
+.contact-info a {
+  font-weight: 600;
+  color: #3b82f6;
+}
+
+/* Botón de registro para recibir info */
+.subscribe-section {
+  margin-top: 24px;
+}
+
+.subscribe-button {
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.125rem;
+  width: max-content;
+  transition: background-color 0.3s ease;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+/* === FOOTER === */
+footer {
+  background: rgba(255 255 255 / 0.9);
+  backdrop-filter: saturate(180%) blur(16px);
+  color: #6b7280;
+  font-size: 0.9rem;
+  padding: 20px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  flex-wrap: wrap;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 -1px 4px rgb(0 0 0 / 0.05);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer p {
+  margin: 0; /* Quitamos márgenes para que no empuje nada raro */
+}
+
+footer .social-links {
+  display: flex;
+  gap: 24px;
+}
+
+/* Estilos para los íconos de redes */
+footer .social-links a {
+  display: flex;
+  align-items: center;
+  color: #6b7280;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+footer .social-links a:focus {
+  color: #3b82f6;
+  outline: none;
+}
+
+footer .social-links a img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
