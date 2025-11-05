@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Innovación y Contacto - EcoVolt </title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="CSS/estilos.css">
+</head>
+<body>
+  <header role="banner" aria-label="Encabezado principal">
+    <div class="brand" tabindex="0"><img src="img/Imagen2.png" alt="EcoVolt" class="header-avatar"> EcoVolt</div>
+    <button class="menu-toggle" aria-label="Abrir menú" aria-controls="side-menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <aside id="side-menu" class="side-menu" aria-hidden="true">
+    <nav>
+      <a href="Menú principal.html">Inicio</a>
+      <a href="Producto.html">Producto</a>
+      <a href="Visión y equipo.html">Visión y equipo</a>
+    </nav>
+  </aside>
+  <div class="side-menu-backdrop" hidden></div>
+
+  <main class="content" role="main" tabindex="-1">
+    <section id="innovation" tabindex="0" aria-labelledby="innovation-title">
+      <div>
+        <h2 id="innovation-title">Innovación y Diferenciadores</h2>
+        <p>
+          Descubre qué hace especial nuestro medidor frente a otros en el mercado. Nuestro dispositivo se destaca por:
+        </p>
+          <ul>
+            <li>Bajo costo, accesible para cualquier usuario.</li>
+            <li>Fácil instalación rápida sin herramientas especializadas.</li>
+            <li>Monitoreo en tiempo real con notificaciones instantáneas.</li>
+            <li>Uso educativo para fomentar el aprendizaje y la concientización.</li>
+            <li>Diseño compacto y resistente a condiciones ambientales adversas.</li>
+          </ul>
+        <p>
+          Explora los medios abajo para ver imágenes que muestran la innovación en acción.
+        </p>
+      </div>
+      <div class="media-gallery" aria-label="Galería de imágenes creadas por inteligencia artificial que muestran medidores de energía basados en Arduino con circuitos, pantallas LCD y componentes electrónicos modernos en un diseño tecnológico y atractivo.">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/009ec55e-9311-44a3-8ab2-e77b67ff3dad.png" alt="Imagen creada con inteligencia artificial mostrando un medidor de energía con una placa Arduino, circuito electrónico y pantalla LCD en ambiente tecnológico." loading="lazy" />
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/89dae9f4-01cb-4c45-a174-bad130ab3186.png" alt="Imagen creada con inteligencia artificial de un medidor de energía electrónico con Arduino y sensores, presentado en diseño moderno y azul." loading="lazy" />
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6351490c-fdf3-46c3-add4-47fbbcfec53c.png" alt="Imagen de inteligencia artificial ilustrando medidor de consumo energético inteligente con placa Arduino y componentes electrónicos." loading="lazy" />
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d6f19b02-9171-4ed7-9eba-3681d1788fae.png" alt="Render creado por inteligencia artificial que presenta medidor de energía digital basado en Arduino con pantallas y circuitos en estilo futurista." loading="lazy" />
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/56b42b33-ff11-4efa-a3ee-f2216699ab27.png" alt="Imagen generada por computadora que muestra medidores de energía con Arduino y dispositivos tecnológicos rodeados de luz y efectos digitales." loading="lazy" />
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/20037050-df45-4571-b558-d67d5b9e5825.png" alt="Imagen creada con inteligencia artificial mostrando un diseño adicional de medidor de energía basado en Arduino con componentes electrónicos y pantalla en ambiente futurista." loading="lazy" />
+      </div>
+    </section>
+
+    <section id="contact" tabindex="0" aria-labelledby="contact-title">
+      <div>
+        <h2 id="contact-title">Contacto</h2>
+        <form id="contact-form" novalidate aria-describedby="form-status">
+          <label for="name">Nombre completo</label>
+          <input type="text" id="name" name="name" required aria-required="true" autocomplete="name" placeholder="Tu nombre" />
+          <div class="error-message" id="error-name" aria-live="polite"></div>
+
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" placeholder="tu@correo.com" />
+          <div class="error-message" id="error-email" aria-live="polite"></div>
+
+          <label for="message">Mensaje</label>
+          <textarea id="message" name="message" required aria-required="true" placeholder="Escribe tu mensaje aquí"></textarea>
+          <div class="error-message" id="error-message" aria-live="polite"></div>
+
+          <button type="submit" class="btn-submit" aria-describedby="form-status">
+            <span class="material-icons" aria-hidden="true">send</span> Enviar mensaje
+          </button>
+          <div id="form-status" role="alert" aria-live="assertive" class="success-message" style="display:none;">Mensaje enviado con éxito. ¡Gracias por contactarnos!</div>
+        </form>
+      </div>
+      <div class="contact-info" aria-label="Información de contacto">
+        <div class="info-item">
+          <span class="material-icons" aria-hidden="true">email</span>
+          <a href="mailto:info@medidorinteligente.com" tabindex="0">info@ecovolt.com</a>
+        </div>
+        <div class="info-item">
+          <span class="material-icons" aria-hidden="true">public</span>
+          <a href="https://www.instagram.com/ecovolt25/profilecard/?igsh=MWtoOHR5aDAxZGk5eA==" target="_blank" rel="noopener noreferrer" tabindex="0" aria-label="Síguenos en instagram">Instagram</a>
+        </div>
+    </section>
+  </main>
+
+<footer role="contentinfo">
+  <p>&copy; EcoVolt 2025. Todos los derechos reservados.</p>
+  </a>
+  </div>
+</footer>
+
+  <script>
+    (function(){
+      const btn = document.querySelector('.menu-toggle');
+      const menu = document.getElementById('side-menu');
+      const backdrop = document.querySelector('.side-menu-backdrop');
+      function openMenu(){
+        menu.classList.add('open');
+        backdrop.hidden = false; backdrop.classList.add('show');
+        btn.setAttribute('aria-expanded','true');
+        menu.setAttribute('aria-hidden','false');
+      }
+      function closeMenu(){
+        menu.classList.remove('open');
+        backdrop.classList.remove('show');
+        setTimeout(()=>{ backdrop.hidden = true; }, 200);
+        btn.setAttribute('aria-expanded','false');
+        menu.setAttribute('aria-hidden','true');
+      }
+      btn.addEventListener('click', ()=>{
+        if(menu.classList.contains('open')) closeMenu(); else openMenu();
+      });
+      backdrop.addEventListener('click', closeMenu);
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
+    })();
+  </script>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visión y Equipo - EcoVolt</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="CSS/Visiónequpo.css">
+</head>
+<body>
+  <header>
+    <div class="brand"><img src="img/Imagen2.png" alt="EcoVolt" class="header-avatar"> EcoVolt</div>
+    <button class="menu-toggle" aria-label="Abrir menú" aria-controls="side-menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <aside id="side-menu" class="side-menu" aria-hidden="true">
+    <nav>
+      <a href="Menú principal.html">Inicio</a>
+      <a href="Producto.html">Producto</a>
+      <a href="Diferenciadores y Contacto.html.html">Innovación y contacto</a>
+    </nav>
+  </aside>
+  <div class="side-menu-backdrop" hidden></div>
+
+  <main class="content">
+    <section id="vision">
+      <h2>Visión y Objetivos</h2>
+
+      <h3>Visión</h3>
+      <p>Ser una solución líder en medición y control del consumo eléctrico, promoviendo un futuro más eficiente, accesible y sostenible para hogares y empresas.</p>
+
+      <h3>Objetivos</h3>
+      <ul>
+        <li>Desarrollar un sistema eficiente que permita a los usuarios visualizar su consumo energético y el gasto económico que este genera de forma precisa ayudándolos a tomar decisiones informadas para reducir el gasto eléctrico.</li>
+        <li>Concientizar a los hogares y negocios sobre el uso resonsable de la electricidad mediante el análisis de datos del medidor, contribuyendo a la sostenibilidad del planeta.</li>
+        <li>Crear un dispositivo funcional y económico que se adapte a diferentes tipos de usuarios, priorizando la facilidad de uso y la comodidad del cliente.</li>
+      </ul>
+    </section>
+
+    <section id="team">
+      <h2>Sobre Nosotros / El Equipo</h2>
+      <p>Somos un equipo que busca a través de EcoVolt, crear una alternatia eficiente y fácil de usar para que el cliente pueda monitorear su consumo eléctrico y el costo que esto tendrá. </p>
+
+    <section>
+      <h3> Equipo EcoVolt</h3>
+      <div class="gallery-container">
+        <div class="gallery">
+          <img src="img/Veronica Magaña.png" alt="Verónica Magaña" >
+          <div class="footer">Verónica Magaña</div>
+        </div>
+        <div class="gallery">
+          <img src="img/Daniela Murga.png" alt="Daniela Murga" >
+          <div class="footer">Daniela Murga</div>
+        </div>
+        <div class="gallery">
+          <img src="img/Javier Aguilar.png" alt="Javier Aguilar" >
+          <div class="footer">Javier Aguilar</div>
+        </div>
+        <div class="gallery">
+          <img src="img/Julissa Hernández.png" alt="Julissa Hernández" >
+          <div class="footer">Julissa</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; EcoVolt 2025. Todos los derechos reservados.</p>
+  </footer>
+  <script>
+    (function(){
+      const btn = document.querySelector('.menu-toggle');
+      const menu = document.getElementById('side-menu');
+      const backdrop = document.querySelector('.side-menu-backdrop');
+      function openMenu(){
+        menu.classList.add('open');
+        backdrop.hidden = false; backdrop.classList.add('show');
+        btn.setAttribute('aria-expanded','true');
+        menu.setAttribute('aria-hidden','false');
+      }
+      function closeMenu(){
+        menu.classList.remove('open');
+        backdrop.classList.remove('show');
+        setTimeout(()=>{ backdrop.hidden = true; }, 200);
+        btn.setAttribute('aria-expanded','false');
+        menu.setAttribute('aria-hidden','true');
+      }
+      btn.addEventListener('click', ()=>{
+        if(menu.classList.contains('open')) closeMenu(); else openMenu();
+      });
+      backdrop.addEventListener('click', closeMenu);
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
+    })();
+  </script>
+</body>
+</html>
